@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 # Create your models here.
 
@@ -13,6 +14,10 @@ class Post(models.Model):
     categories = models.ManyToManyField('Categorias')
     featured = models.BooleanField(default=False)
 
+    def get_absolute_url(self):
+        return reverse("blogs:post", kwargs={"slug": self.slug})
+    
+
     def __str__(self):
         return self.title
     
@@ -21,11 +26,13 @@ class Categorias(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
 
-    def __str__(self):
-        return self.title
-    
     class Meta:
-        verbose_name_plural = 'Categorias'
-        
+        verbose_name_plural = 'categorias'
+
+    def get_absolute_url(self):
+        return reverse("blogs:categorias", kwargs={"slug": self.slug})
+    
+    def __str__(self):
+        return self.title  
     
     
