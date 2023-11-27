@@ -10,7 +10,7 @@
             <a class="nav-link active" aria-current="page" href="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Destacados</a>
+            <a class="nav-link" href="{% url 'blogs:featured'%}">Destacados</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,7 +19,7 @@
             <ul class="dropdown-menu">
                 {% for categoria in categorias %}
                     <li><a class="dropdown.item"
-                            href="m" >{{ categoria.title }}</a></li>
+                            href="{% url 'blogs:categoria' categoria.slug %}" >{{ categoria.title }}</a></li>
                 {% endfor %}
             </ul>
           </li>
@@ -28,9 +28,9 @@
           </li>
         </ul>
         <form class="d-flex" role="search" action="" method="get">  
-          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+          <input name="search" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
       </div>
     </div>
-  </nav>
+</nav>

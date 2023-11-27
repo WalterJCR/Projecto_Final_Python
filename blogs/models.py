@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django.utils import timezone
 
 # Create your models here.
 
@@ -13,11 +14,14 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     categories = models.ManyToManyField('Categorias')
     featured = models.BooleanField(default=False)
+    pub_date =models.DateTimeField(default=timezone.now)
 
     def get_absolute_url(self):
         return reverse("blogs:post", kwargs={"slug": self.slug})
     
-
+    class Meta:
+        ordering = ["-date_created"]
+        
     def __str__(self):
         return self.title
     
