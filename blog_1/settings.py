@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'usuarios.apps.UsuariosConfig',
     'blogs.apps.BlogsConfig',
 ]
@@ -131,3 +133,8 @@ AUTH_USER_MODEL = 'usuarios.User'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+#crispy templates
+
+CRISPY_ALOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
