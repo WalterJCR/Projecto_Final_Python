@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 markdown = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
